@@ -1,6 +1,6 @@
 var nodejieba = require("../index.js");
 
-var sentence = "我是拖拉机学院手扶拖拉机专业的。不用多久，我就会升职加薪，当上CEO，走上人生巅峰。";
+var sentence = "我要轉帳100元給我媽媽從薪資帳號，另外說一下，我喜歡基金與信用卡服務";
 
 var result;
 

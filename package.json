@@ -33,7 +33,8 @@
     "coveralls": "~2.11.6"
   },
   "scripts": {
-    "test": "node test/demo.js && node test/load_dict_demo.js && mocha --timeout 10s -R spec test/test.js && mocha --timeout 10s -R spec test/load_dict_test.js"
+    "test": "node test/demo.js && node test/load_dict_demo.js && mocha --timeout 10s -R spec test/test.js && mocha --timeout 10s -R spec test/load_dict_test.js",
+    "test1": "node test/demo.js"
   },
   "license": "MIT"
 }
