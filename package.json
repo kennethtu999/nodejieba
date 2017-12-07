@@ -34,7 +34,8 @@
   },
   "scripts": {
     "test": "node test/demo.js && node test/load_dict_demo.js && mocha --timeout 10s -R spec test/test.js && mocha --timeout 10s -R spec test/load_dict_test.js",
-    "test1": "node test/demo.js"
+    "test1": "node test/demo.js",
+    "testQuery": "node test/demoQuery.js"
   },
   "license": "MIT"
 }

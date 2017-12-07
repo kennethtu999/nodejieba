@@ -22,6 +22,42 @@ nodejieba.load = function (dictJson) {
   return someFunct.call(this, dict, hmmDict, userDict, idfDict, stopWordDict);
 }
 
+//https://gist.github.com/luw2007/6016931
+const entityConvert = function(entity) {
+  const rtn = {word: entity.word};
+  switch(entity.tag.charAt(0).toLowerCase()) {
+    case("n"):
+      rtn["pos_tag"]="NN";
+      break;
+    case("v"):
+      rtn["pos_tag"]="VV";
+      break;
+    case("a"):
+      rtn["pos_tag"]="JJ";
+      break;
+    default:
+      rtn["pos_tag"]="NN";
+  }
+  return rtn;
+};
+
+/*[ { word: '我要', tag: 'N' },
+  { word: '轉帳', tag: 'Nv' },
+  { word: '100', tag: 'm' },
+  { word: '元', tag: 'n' },
+  { word: '給', tag: 'Vt' },
+  { word: '我', tag: 'n' },
+  { word: '媽媽', tag: 'N' }]
+*/
+nodejieba.query = function(sentence) {
+  
+  var rtn = [{input:sentence, output:[]}];
+  nodejieba.tag(sentence).forEach((entity) => {
+    rtn[0].output.push(entityConvert(entity));
+  });
+  return rtn;
+}
+
 function wrapWithDictLoad(obj, functName) {
   var someFunct = obj[functName];
   obj[functName] = function () {
@@ -42,4 +78,3 @@ wrapWithDictLoad(nodejieba, "extract");
 wrapWithDictLoad(nodejieba, "insertWord");
 
 module.exports = nodejieba;
-
